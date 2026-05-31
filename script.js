@@ -20,9 +20,11 @@ pairBtn.addEventListener("click", async () => {
   try {
 
     // Request official pairing code from backend
-    const response = await fetch(
-  `${BACKEND_URL}/pair?number=${number}`
-);
+    console.log("Requesting code for:", number);
+
+const code = await sock.requestPairingCode(number);
+
+console.log("WhatsApp returned code:", code);
     const data = await response.json();
 
     loadingDiv.classList.add("hidden");
